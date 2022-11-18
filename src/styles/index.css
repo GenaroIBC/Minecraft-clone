@@ -63,3 +63,34 @@ body {
 .save-world-btn:hover {
   outline: 3px solid #bbb;
 }
+
+.select-texture-bar {
+  width: 100%;
+  max-width: 500px;
+
+  position: absolute;
+  left: 50%;
+  bottom: 1.5rem;
+
+  padding: 0.8rem;
+  border: 15px ridge #aaa;
+
+  display: flex;
+  gap: 1rem;
+  justify-content: space-around;
+
+  transform: translateX(-50%);
+
+  background-color: #333;
+  image-rendering: pixelated;
+}
+
+.select-texture-bar img {
+  border: 2px solid #fff;
+  width: 100px;
+}
+
+.select-texture-bar img.selected {
+  outline: 5px solid rgb(255, 0, 0);
+  width: 100px;
+}
