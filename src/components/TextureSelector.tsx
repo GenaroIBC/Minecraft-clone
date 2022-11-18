@@ -12,7 +12,12 @@ import { Texture } from "../reducers/worldReducer/types";
 
 const images = { dirtImg, glassImg, grassImg, woodImg, logImg };
 
-export function TextureSelector({ setTexture, texture }) {
+type Props = {
+  setTexture: (texture: Texture) => void;
+  texture: Texture;
+};
+
+export function TextureSelector({ setTexture, texture }: Props) {
   const { dirt, grass, glass, log, wood } = useKeyboard();
 
   const textureOptions = { dirt, grass, glass, log, wood };

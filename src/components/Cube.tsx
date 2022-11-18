@@ -66,6 +66,7 @@ export function Cube({
             break;
         }
       }}
+      // @ts-ignore
       ref={ref}
     >
       <boxGeometry attach="geometry" />

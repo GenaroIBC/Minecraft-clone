@@ -9,7 +9,7 @@ export type Texture = "grass" | "log" | "glass" | "dirt" | "wood";
 
 export type CubePosition = [number, number, number];
 
-type Cube = {
+export type Cube = {
   id: string;
   position: CubePosition;
   texture: Texture;

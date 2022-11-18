@@ -5,7 +5,11 @@ import { CubePosition } from "../reducers/worldReducer/types";
 
 groundTexture.repeat.set(50, 100);
 
-export function Ground({ addCube }) {
+type Props = {
+  addCube: (position: CubePosition) => void;
+};
+
+export function Ground({ addCube }: Props) {
   const [ref] = usePlane(() => ({
     rotation: [-Math.PI / 2, 0, 0],
     position: [0, 0.5, 0]
@@ -22,6 +26,7 @@ export function Ground({ addCube }) {
   };
 
   return (
+    // @ts-ignore
     <mesh onClick={handleMeshClick} ref={ref}>
       <planeGeometry attach="geometry" args={[50, 100]} />
       <meshStandardMaterial attach="material" map={groundTexture} />

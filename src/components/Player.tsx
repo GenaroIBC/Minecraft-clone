@@ -67,6 +67,6 @@ export function Player() {
       );
     }
   });
-
+  // @ts-ignore
   return <mesh ref={ref} />;
 }

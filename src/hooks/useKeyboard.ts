@@ -29,6 +29,7 @@ export function useKeyboard() {
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
+      // @ts-ignore
       const action = KEYBOARD_KEYS[event.code];
 
       if (action) {
@@ -40,6 +41,7 @@ export function useKeyboard() {
     };
 
     const handleKeyUp = (event: KeyboardEvent) => {
+      // @ts-ignore
       const action = KEYBOARD_KEYS[event.code];
 
       if (action) {

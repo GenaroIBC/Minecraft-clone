@@ -1,6 +1,13 @@
 import { Cube } from "./Cube";
+import { Cube as CubeT, CubePosition } from "../reducers/worldReducer/types";
 
-export default function Cubes({ cubes, removeCube, addCube }) {
+type Props = {
+  cubes: Array<CubeT>;
+  removeCube: (id: string) => void;
+  addCube: (position: CubePosition) => void;
+};
+
+export default function Cubes({ cubes, removeCube, addCube }: Props) {
   return (
     <>
       {cubes.map(cube => (
