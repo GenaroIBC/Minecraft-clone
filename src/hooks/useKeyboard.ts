@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 
 const KEYBOARD_KEYS = {
-  Digit1: "grass",
-  Digit2: "dirt",
-  Digit3: "wood",
+  Digit1: "dirt",
+  Digit2: "glass",
+  Digit3: "grass",
   Digit4: "log",
+  Digit5: "wood",
   KeyW: "moveForward",
   KeyS: "moveBackward",
   KeyA: "moveLeft",
@@ -14,15 +15,16 @@ const KEYBOARD_KEYS = {
 
 export function useKeyboard() {
   const [actions, setActions] = useState({
+    dirt: false,
+    glass: false,
+    grass: false,
+    log: false,
+    wood: false,
     moveForward: false,
     moveBackward: false,
-    moveRight: false,
     moveLeft: false,
-    jump: false,
-    dirt: false,
-    grass: false,
-    wood: false,
-    log: false
+    moveRight: false,
+    jump: false
   });
 
   useEffect(() => {
@@ -55,6 +57,6 @@ export function useKeyboard() {
       document.removeEventListener("keyup", handleKeyUp);
       document.removeEventListener("keydown", handleKeyDown);
     };
-  });
+  }, []);
   return actions;
 }
