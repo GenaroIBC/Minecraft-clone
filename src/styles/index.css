@@ -5,6 +5,7 @@
 html,
 body,
 #root {
+  font-family: monospace, sans-serif;
   width: 100%;
   height: 100%;
 
@@ -32,6 +33,7 @@ body {
 .player-pointer {
   color: #fff;
   font-size: 3rem;
+  opacity: 0.8;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -39,4 +41,25 @@ body {
   transform: translate(-50%, -50%);
 
   z-index: 1000;
+}
+
+.save-world-btn {
+  font-family: inherit;
+  color: #fff;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  background-image: url("/src/assets/img/log.jpg");
+  background-size: contain;
+  image-rendering: pixelated;
+  padding: 0.5rem 1rem;
+  margin: 1rem;
+
+  position: absolute;
+  top: 0;
+
+  z-index: 1000;
+}
+
+.save-world-btn:hover {
+  outline: 3px solid #bbb;
 }

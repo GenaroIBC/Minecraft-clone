@@ -8,7 +8,7 @@ import Cubes from "./components/Cubes";
 import { useWorldReducer } from "./reducers/worldReducer/worldReducer";
 
 export default function App() {
-  const { addCube, worldState, removeCube } = useWorldReducer();
+  const { addCube, worldState, removeCube, saveWorld } = useWorldReducer();
 
   return (
     <>
@@ -22,7 +22,10 @@ export default function App() {
           <Ground addCube={addCube} />
         </Physics>
       </Canvas>
-      <div className="player-pointer">+</div>
+      <span className="player-pointer">+</span>
+      <button className="save-world-btn" onClick={saveWorld}>
+        Save World
+      </button>
     </>
   );
 }

@@ -2,9 +2,13 @@ import { CubePosition, WorldReducerActionType, WorldState } from "./types";
 import { useReducer } from "react";
 import { v4 as uuid } from "uuid";
 
-export const WORLD_INITIAL_STATE: WorldState = {
+const userLocalWorldState = JSON.parse(
+  localStorage.getItem("worldState") as string
+);
+
+export const WORLD_INITIAL_STATE: WorldState = userLocalWorldState ?? {
   cubes: [],
-  texture: "wood"
+  texture: "glass"
 };
 
 type WorldReducerAction = {
@@ -46,6 +50,7 @@ export const worldReducer: WorldReducer = (state, action) => {
     case "RESET_WORLD":
       return state;
     case "SAVE_WORLD":
+      localStorage.setItem("worldState", JSON.stringify(state));
       return state;
     case "SET_TEXTURE":
       return state;
@@ -68,5 +73,9 @@ export function useWorldReducer() {
     worldDispatcher({ type: "REMOVE_CUBE", payload: { id } });
   };
 
-  return { worldState, addCube, removeCube };
+  const saveWorld = () => {
+    worldDispatcher({ type: "SAVE_WORLD", payload: null });
+  };
+
+  return { worldState, addCube, removeCube, saveWorld };
 }
