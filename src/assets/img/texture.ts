@@ -2,14 +2,20 @@ import { grassImg, dirtImg, glassImg, logImg, woodImg } from "./images";
 
 import { TextureLoader, RepeatWrapping, NearestFilter } from "three";
 
-const grassTexture = new TextureLoader().load(grassImg);
-const glassTexture = new TextureLoader().load(glassImg);
-const logTexture = new TextureLoader().load(logImg);
-const woodTexture = new TextureLoader().load(woodImg);
-const dirtTexture = new TextureLoader().load(dirtImg);
+const images = [grassImg, logImg, dirtImg, woodImg, glassImg];
 
-grassTexture.wrapS = RepeatWrapping;
-grassTexture.wrapT = RepeatWrapping;
+const textures = images.map(img => new TextureLoader().load(img));
 
-grassTexture.magFilter = NearestFilter;
-export { grassTexture, logTexture, glassTexture, woodTexture, dirtTexture };
+textures.forEach(texture => {
+  texture.wrapS = RepeatWrapping;
+  texture.wrapT = RepeatWrapping;
+  texture.magFilter = NearestFilter;
+});
+
+const grassTexture = textures[0];
+const logTexture = textures[1];
+const dirtTexture = textures[2];
+const woodTexture = textures[3];
+const glassTexture = textures[4];
+
+export { grassTexture, logTexture, dirtTexture, woodTexture, glassTexture };

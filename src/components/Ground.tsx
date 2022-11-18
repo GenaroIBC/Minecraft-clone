@@ -3,7 +3,8 @@ import { ThreeEvent } from "@react-three/fiber";
 import { grassTexture } from "../assets/img/texture";
 import { CubePosition } from "../reducers/worldReducer/types";
 
-grassTexture.repeat.set(10, 10);
+grassTexture.repeat.set(50, 100);
+
 export function Ground({ addCube }) {
   const [ref] = usePlane(() => ({
     rotation: [-Math.PI / 2, 0, 0],
@@ -22,7 +23,7 @@ export function Ground({ addCube }) {
 
   return (
     <mesh onClick={handleMeshClick} ref={ref}>
-      <planeGeometry attach="geometry" args={[10, 10]} />
+      <planeGeometry attach="geometry" args={[50, 100]} />
       <meshStandardMaterial attach="material" map={grassTexture} />
     </mesh>
   );
