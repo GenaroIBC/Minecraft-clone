@@ -1,4 +1,9 @@
-import { CubePosition, WorldReducerActionType, WorldState } from "./types";
+import {
+  CubePosition,
+  WorldReducerActionType,
+  WorldState,
+  Texture
+} from "./types";
 import { useReducer } from "react";
 import { v4 as uuid } from "uuid";
 
@@ -8,7 +13,7 @@ const userLocalWorldState = JSON.parse(
 
 export const WORLD_INITIAL_STATE: WorldState = userLocalWorldState ?? {
   cubes: [],
-  texture: "glass"
+  texture: "dirt"
 };
 
 type WorldReducerAction = {
@@ -16,7 +21,8 @@ type WorldReducerAction = {
   payload: {
     position?: CubePosition;
     id?: string;
-  };
+    texture?: Texture;
+  } | null;
 };
 
 type WorldReducer = (
@@ -27,25 +33,22 @@ type WorldReducer = (
 export const worldReducer: WorldReducer = (state, action) => {
   switch (action.type) {
     case "ADD_CUBE":
-      const { position } = action.payload;
       return {
         ...state,
         cubes: [
           ...state.cubes,
           {
             id: uuid(),
-            position,
+            position: action.payload!.position!,
             texture: state.texture
           }
         ]
       };
 
     case "REMOVE_CUBE":
-      const { id } = action.payload;
-
       return {
         ...state,
-        cubes: [...state.cubes.filter(cube => cube.id !== id)]
+        cubes: [...state.cubes.filter(cube => cube.id !== action.payload!.id)]
       };
     case "RESET_WORLD":
       return state;
@@ -53,7 +56,7 @@ export const worldReducer: WorldReducer = (state, action) => {
       localStorage.setItem("worldState", JSON.stringify(state));
       return state;
     case "SET_TEXTURE":
-      return state;
+      return { ...state, texture: action.payload!.texture! };
     default:
       return state;
   }
@@ -77,5 +80,9 @@ export function useWorldReducer() {
     worldDispatcher({ type: "SAVE_WORLD", payload: null });
   };
 
-  return { worldState, addCube, removeCube, saveWorld };
+  const setTexture = (texture: Texture) => {
+    worldDispatcher({ type: "SET_TEXTURE", payload: { texture } });
+  };
+
+  return { worldState, addCube, removeCube, saveWorld, setTexture };
 }
