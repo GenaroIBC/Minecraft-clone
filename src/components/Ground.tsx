@@ -1,9 +1,9 @@
 import { usePlane } from "@react-three/cannon";
 import { ThreeEvent } from "@react-three/fiber";
-import { grassTexture } from "../assets/img/texture";
+import { groundTexture } from "../assets/img/texture";
 import { CubePosition } from "../reducers/worldReducer/types";
 
-grassTexture.repeat.set(50, 100);
+groundTexture.repeat.set(50, 100);
 
 export function Ground({ addCube }) {
   const [ref] = usePlane(() => ({
@@ -24,7 +24,7 @@ export function Ground({ addCube }) {
   return (
     <mesh onClick={handleMeshClick} ref={ref}>
       <planeGeometry attach="geometry" args={[50, 100]} />
-      <meshStandardMaterial attach="material" map={grassTexture} />
+      <meshStandardMaterial attach="material" map={groundTexture} />
     </mesh>
   );
 }

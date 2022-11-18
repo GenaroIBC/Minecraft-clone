@@ -1,8 +1,16 @@
 import { useEffect } from "react";
 import { v4 as uuid } from "uuid";
-import * as images from "../assets/img/images";
+import {
+  dirtImg,
+  glassImg,
+  grassImg,
+  logImg,
+  woodImg
+} from "../assets/img/images";
 import { useKeyboard } from "../hooks/useKeyboard";
 import { Texture } from "../reducers/worldReducer/types";
+
+const images = { dirtImg, glassImg, grassImg, woodImg, logImg };
 
 export function TextureSelector({ setTexture, texture }) {
   const { dirt, grass, glass, log, wood } = useKeyboard();
