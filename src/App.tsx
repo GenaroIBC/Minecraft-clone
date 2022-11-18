@@ -19,7 +19,11 @@ export default function App() {
         <ambientLight intensity={0.5} />
         <FirstPointOfView />
         <Physics>
-          <Cubes removeCube={removeCube} cubes={worldState.cubes} />
+          <Cubes
+            addCube={addCube}
+            removeCube={removeCube}
+            cubes={worldState.cubes}
+          />
           <Player />
           <Ground addCube={addCube} />
         </Physics>
