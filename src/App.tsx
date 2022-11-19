@@ -10,7 +10,7 @@ import { TextureSelector } from "./components/TextureSelector";
 import { HelpMenu } from "./components/HelpMenu";
 
 export default function App() {
-  const { addCube, worldState, removeCube, saveWorld, setTexture } =
+  const { addCube, worldState, removeCube, saveWorld, setTexture, resetWorld } =
     useWorldReducer();
 
   return (
@@ -33,6 +33,9 @@ export default function App() {
       <span className="player-pointer">+</span>
       <button className="save-world-btn texturized-btn" onClick={saveWorld}>
         Save World
+      </button>
+      <button className="reset-world-btn texturized-btn" onClick={resetWorld}>
+        Reset World
       </button>
       <HelpMenu />
     </>

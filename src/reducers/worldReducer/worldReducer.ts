@@ -42,21 +42,21 @@ export const worldReducer: WorldReducer = (state, action) => {
           }
         ]
       };
-
     case "REMOVE_CUBE":
       return {
         ...state,
         cubes: [...state.cubes.filter(cube => cube.id !== action.payload!.id)]
       };
     case "RESET_WORLD":
-      return state;
+      return {
+        cubes: [],
+        texture: "wood"
+      };
     case "SAVE_WORLD":
       localStorage.setItem("worldState", JSON.stringify(state));
       return state;
     case "SET_TEXTURE":
       return { ...state, texture: action.payload!.texture! };
-    default:
-      return state;
   }
 };
 
@@ -82,5 +82,13 @@ export function useWorldReducer() {
     worldDispatcher({ type: "SET_TEXTURE", payload: { texture } });
   };
 
-  return { worldState, addCube, removeCube, saveWorld, setTexture };
+  const resetWorld = () => {
+    const isDelete = window.confirm(
+      "Are you sure you want to reset this world? There is no back!"
+    );
+
+    if (isDelete) worldDispatcher({ type: "RESET_WORLD", payload: null });
+  };
+
+  return { worldState, addCube, removeCube, saveWorld, setTexture, resetWorld };
 }
