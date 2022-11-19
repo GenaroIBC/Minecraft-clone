@@ -2,7 +2,7 @@ import { Canvas } from "@react-three/fiber";
 import { Sky } from "@react-three/drei";
 import { Physics } from "@react-three/cannon";
 import { Ground } from "./components/Ground";
-import { FirstPointOfView } from "./components/FirstPointOfView";
+import { FirstPersonView } from "./components/FirstPersonView";
 import { Player } from "./components/Player";
 import Cubes from "./components/Cubes";
 import { useWorldReducer } from "./reducers/worldReducer/worldReducer";
@@ -18,7 +18,7 @@ export default function App() {
       <Canvas>
         <Sky sunPosition={[1, 0, 1]} />
         <ambientLight intensity={0.5} />
-        <FirstPointOfView />
+        <FirstPersonView />
         <Physics>
           <Cubes
             addCube={addCube}
