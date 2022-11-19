@@ -7,6 +7,7 @@ import { Player } from "./components/Player";
 import Cubes from "./components/Cubes";
 import { useWorldReducer } from "./reducers/worldReducer/worldReducer";
 import { TextureSelector } from "./components/TextureSelector";
+import { HelpMenu } from "./components/HelpMenu";
 
 export default function App() {
   const { addCube, worldState, removeCube, saveWorld, setTexture } =
@@ -30,9 +31,10 @@ export default function App() {
       </Canvas>
       <TextureSelector setTexture={setTexture} texture={worldState.texture} />
       <span className="player-pointer">+</span>
-      <button className="save-world-btn" onClick={saveWorld}>
+      <button className="save-world-btn texturized-btn" onClick={saveWorld}>
         Save World
       </button>
+      <HelpMenu />
     </>
   );
 }
