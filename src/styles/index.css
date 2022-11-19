@@ -5,7 +5,6 @@
 html,
 body,
 #root {
-  font-family: monospace, sans-serif;
   width: 100%;
   height: 100%;
 
@@ -14,6 +13,8 @@ body,
 
   overflow: hidden;
   user-select: none;
+
+  font-family: monospace, sans-serif;
 }
 
 body {
@@ -30,38 +31,48 @@ body {
   overflow: hidden;
 }
 
-.player-pointer {
-  color: #fff;
-  font-size: 3rem;
-  opacity: 0.8;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-
-  transform: translate(-50%, -50%);
-
-  z-index: 1000;
+button {
+  cursor: pointer;
 }
 
-.save-world-btn {
+.texturized-btn {
+  padding: 0.5rem 1rem;
+  margin: 1rem;
+  z-index: 1000;
+
   font-family: inherit;
   color: #fff;
-  font-size: 1.2rem;
-  border-radius: 8px;
+
   background-image: url("/src/assets/img/log.jpg");
   background-size: contain;
   image-rendering: pixelated;
-  padding: 0.5rem 1rem;
-  margin: 1rem;
 
+  font-size: 1.2rem;
+  border-radius: 8px;
+}
+
+.texturized-btn:hover {
+  outline: 3px solid #bbb;
+}
+
+.player-pointer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1000;
+
+  transform: translate(-50%, -50%);
+
+  font-size: 3rem;
+  opacity: 0.8;
+  color: #fff;
+}
+
+.save-world-btn {
   position: absolute;
   top: 0;
 
-  z-index: 1000;
-}
-
-.save-world-btn:hover {
-  outline: 3px solid #bbb;
+  background-image: url("/src/assets/img/log.jpg");
 }
 
 .select-texture-bar {
@@ -86,11 +97,61 @@ body {
 }
 
 .select-texture-bar img {
-  border: 2px solid #fff;
   width: 100px;
+
+  border: 2px solid #fff;
 }
 
 .select-texture-bar img.selected {
-  outline: 5px solid rgb(255, 0, 0);
   width: 100px;
+
+  outline: 5px solid rgb(255, 0, 0);
+}
+
+.help-menu {
+  position: absolute;
+
+  top: 0;
+  right: 0;
+  z-index: 1000;
+
+  margin: 1rem;
+}
+
+.help-menu p {
+  padding: 1rem;
+
+  border-radius: 10px;
+  background-color: #222;
+  color: #fff;
+}
+
+.help-menu code {
+  padding: 0.3rem 0.6rem;
+  margin-right: 10px;
+
+  background-color: #666;
+  border-radius: 8px;
+
+  font-family: monospace, sans-serif;
+}
+
+.help-menu dialog {
+  border: 10px ridge #aaa;
+
+  background-image: url("/src/assets/img/wood.png");
+  background-size: contain;
+  image-rendering: pixelated;
+
+  overflow: visible;
+
+  z-index: 5000;
+}
+
+.help-menu button {
+  display: block;
+  margin: auto;
+
+  background-image: url("/src/assets/img/grass.jpg");
+  background-size: contain;
 }
