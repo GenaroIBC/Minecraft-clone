@@ -27,7 +27,7 @@ export function Cube({
 
   return (
     <mesh
-      onPointerMove={e => {
+      onPointerOver={e => {
         e.stopPropagation();
         setIsHovered(true);
       }}
@@ -38,7 +38,7 @@ export function Cube({
       onClick={e => {
         e.stopPropagation();
 
-        if (e.altKey) {
+        if (e.altKey || e.ctrlKey) {
           return removeCube(id);
         }
 
