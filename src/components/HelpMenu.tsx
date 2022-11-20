@@ -3,7 +3,7 @@ import { useRef } from "react";
 const ACTION_KEYS = [
   {
     key: "W",
-    action: "Forwards"
+    action: "Forward"
   },
   {
     key: "A",
@@ -11,7 +11,7 @@ const ACTION_KEYS = [
   },
   {
     key: "S",
-    action: "Backwards"
+    action: "Backward"
   },
   {
     key: "D",
