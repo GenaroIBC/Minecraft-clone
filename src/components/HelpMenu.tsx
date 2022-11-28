@@ -59,7 +59,7 @@ export function HelpMenu() {
       </button>
       <dialog onClick={e => e.stopPropagation()} ref={modalRef}>
         {ACTION_KEYS.map(({ key, action }) => (
-          <p>
+          <p key={key}>
             <code>{key}</code>
             <span>{action}</span>
           </p>
