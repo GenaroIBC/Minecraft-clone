@@ -8,19 +8,16 @@ import {
   woodImg
 } from "../assets/img/images";
 import { useKeyboard } from "../hooks/useKeyboard";
+import { useWorldStore } from "../hooks/useWorldStore";
 import { Texture } from "../reducers/worldReducer/types";
 
 const images = { dirtImg, glassImg, grassImg, woodImg, logImg };
 
-type Props = {
-  setTexture: (texture: Texture) => void;
-  texture: Texture;
-};
-
-export function TextureSelector({ setTexture, texture }: Props) {
+export function TextureSelector() {
   const { dirt, grass, glass, log, wood } = useKeyboard();
-
   const textureOptions = { dirt, grass, glass, log, wood };
+
+  const { texture, setTexture } = useWorldStore();
 
   useEffect(() => {
     const selectedTexture = Object.entries(textureOptions).find(
@@ -30,7 +27,7 @@ export function TextureSelector({ setTexture, texture }: Props) {
     if (selectedTexture) {
       setTexture(selectedTexture[0] as Texture);
     }
-  }, [textureOptions]);
+  }, [dirt, grass, glass, log, wood]);
 
   return (
     <nav className="select-texture-bar">

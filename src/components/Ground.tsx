@@ -1,19 +1,18 @@
 import { usePlane } from "@react-three/cannon";
 import { ThreeEvent } from "@react-three/fiber";
 import { groundTexture } from "../assets/img/texture";
+import { useWorldStore } from "../hooks/useWorldStore";
 import { CubePosition } from "../reducers/worldReducer/types";
 
 groundTexture.repeat.set(50, 100);
 
-type Props = {
-  addCube: (position: CubePosition) => void;
-};
-
-export function Ground({ addCube }: Props) {
+export function Ground() {
   const [ref] = usePlane(() => ({
     rotation: [-Math.PI / 2, 0, 0],
     position: [0, 0.5, 0]
   }));
+
+  const { addCube } = useWorldStore();
 
   const handleMeshClick = (event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();

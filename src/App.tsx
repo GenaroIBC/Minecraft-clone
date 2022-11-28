@@ -5,14 +5,10 @@ import { Ground } from "./components/Ground";
 import { FirstPersonView } from "./components/FirstPersonView";
 import { Player } from "./components/Player";
 import Cubes from "./components/Cubes";
-import { useWorldReducer } from "./reducers/worldReducer/worldReducer";
 import { TextureSelector } from "./components/TextureSelector";
 import { NavBar } from "./components/NavBar";
 
 export default function App() {
-  const { addCube, worldState, removeCube, saveWorld, setTexture, resetWorld } =
-    useWorldReducer();
-
   return (
     <>
       <Canvas>
@@ -20,16 +16,12 @@ export default function App() {
         <ambientLight intensity={0.5} />
         <FirstPersonView />
         <Physics>
-          <Cubes
-            addCube={addCube}
-            removeCube={removeCube}
-            cubes={worldState.cubes}
-          />
+          <Cubes />
           <Player />
-          <Ground addCube={addCube} />
+          <Ground />
         </Physics>
       </Canvas>
-      <TextureSelector setTexture={setTexture} texture={worldState.texture} />
+      <TextureSelector />
       <NavBar />
     </>
   );

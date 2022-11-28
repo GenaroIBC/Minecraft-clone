@@ -1,22 +1,13 @@
 import { Cube } from "./Cube";
-import { Cube as CubeT, CubePosition } from "../reducers/worldReducer/types";
+import { useWorldStore } from "../hooks/useWorldStore";
 
-type Props = {
-  cubes: Array<CubeT>;
-  removeCube: (id: string) => void;
-  addCube: (position: CubePosition) => void;
-};
+export default function Cubes() {
+  const { cubes } = useWorldStore();
 
-export default function Cubes({ cubes, removeCube, addCube }: Props) {
   return (
     <>
       {cubes.map(cube => (
-        <Cube
-          removeCube={removeCube}
-          addCube={addCube}
-          key={cube.id}
-          {...cube}
-        />
+        <Cube key={cube.id} {...cube} />
       ))}
     </>
   );

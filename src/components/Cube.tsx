@@ -1,29 +1,24 @@
 import { useBox } from "@react-three/cannon";
 import { useState } from "react";
 import * as textures from "../assets/img/texture";
+import { useWorldStore } from "../hooks/useWorldStore";
 import { CubePosition, Texture } from "../reducers/worldReducer/types";
 
 type CubeProps = {
   position: CubePosition;
   texture: Texture;
   id: string;
-  removeCube: (id: string) => void;
-  addCube: (position: CubePosition) => void;
 };
 
-export function Cube({
-  position,
-  texture,
-  id,
-  removeCube,
-  addCube
-}: CubeProps) {
+export function Cube({ position, texture, id }: CubeProps) {
   const [isHovered, setIsHovered] = useState(false);
 
   const [ref] = useBox(() => ({
     type: "Static",
     position
   }));
+
+  const { removeCube, addCube } = useWorldStore();
 
   return (
     <mesh
