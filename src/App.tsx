@@ -21,6 +21,7 @@ export default function App() {
           <Ground />
         </Physics>
       </Canvas>
+      <span className="player-pointer">+</span>
       <TextureSelector />
       <NavBar />
     </>
